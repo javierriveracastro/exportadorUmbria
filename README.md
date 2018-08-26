@@ -1,5 +1,4 @@
 
-
 Este script de python 2.7 está preparado para exportar partidas de la comunidad umbría y descargarlas en un directorio para su lectura sin necesidad de conectarse a la comunidad. Los usos son mútiples desde backup para los paranoides, lectura para los nostálgicos o para esos másters que quieren reutilizar materiales o se quieren marchar.
 
 El script es feo, poco "pythonico" y puede que no sea muy amable para los no iniciados pero es una versión inicial, ah, tampoco es rápido así que tendrás que esperar al menos unos 2 o 3 minutos a que acabe pero él se encarga de todo.
