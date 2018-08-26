@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 #autor thewalking.miguel
-#version 0.1
+#version 0.1.1
 
 import mechanize
-import requests
 from bs4 import BeautifulSoup
 import cookielib
 import sys
@@ -241,10 +240,14 @@ def main():
 	ORIGEN = "https://www.comunidadumbria.com/"
 	reload(sys)
 	sys.setdefaultencoding('utf8')
-	usuario = "TU_USUARIO"
-	password = "TU_PASSWORD"
-	slug = "PARTIDA_A_DESCARGAR" #Ejemplo: es el texto que sigue a www.comunidadumbria.com/partida/[slug]
-	destino = "DIRECTORIO_DESTINO" #/home/umbria/
+	usuario = raw_input("Usuario:")
+	password = raw_input("Password:")
+	slug = raw_input("Dirección de la partida: www.comunidadumbria.com/partida/") 
+	destino = raw_input("Directorio de destino:")
+
+	if (destino[-1]!= "/"):
+		destino = destino + "/"
+
 
 	cj = cookielib.CookieJar()
 	br = mechanize.Browser()
