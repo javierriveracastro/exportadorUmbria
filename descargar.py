@@ -255,9 +255,8 @@ def hayPaginadorPortada(soup, destino, br, ORIGEN, descargados):
 
 def main():
     ORIGEN = "https://www.comunidadumbria.com/"
-    from umbria.descargar_gui import main as main_qt
     try:
-        pass
+        from umbria.descargar_gui import main as main_qt
     except ImportError:
         usuario = input("Usuario:")
         password = input("Password:")
