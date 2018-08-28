@@ -1,21 +1,20 @@
 
-Este script de python 2.7 está preparado para exportar partidas de la comunidad umbría y descargarlas en un directorio para su lectura sin necesidad de conectarse a la comunidad. Los usos son mútiples desde backup para los paranoides, lectura para los nostálgicos o para esos másters que quieren reutilizar materiales o se quieren marchar.
+Este script de python 3 está preparado para exportar partidas de la comunidad umbría y descargarlas en un directorio para su lectura sin necesidad de conectarse a la comunidad. Los usos son mútiples desde backup para los paranoides, lectura para los nostálgicos o para esos másters que quieren reutilizar materiales o se quieren marchar.
 
 El script es feo, poco "pythonico" y puede que no sea muy amable para los no iniciados pero es una versión inicial, ah, tampoco es rápido así que tendrás que esperar al menos unos 2 o 3 minutos a que acabe pero él se encarga de todo.
 
 Requisitos: 
 
-Python 2.7 
+Python 3, BeautifulSoup4
 
-Tener instalado pip. Pip es un instalador de paquetes de python y se instala mediante
-sudo apt-get install python-pip
+Si tienes instalado pip puedes usar:
 
-Descargar los paquetes BeautifulSoup4 y mechanize
-pip install BeautifulSoup4
 pip install mechanize
 
+Dependencias opcionales: PyQt5. Si esta instalado funcionará en una ventana en otro caso en modo texto
+
 Modo de funcionamiento:
-Descargar el script y ejecutar python descarga.py
+Descargar el script y ejecutar python3 descarga.py
 
 El script solicitará los siguientes parámetros:
 Usuario de umbria y contraseña:  Solo se utilizan para entrar en umbría, no voy a robar vuestros secretos ;)
