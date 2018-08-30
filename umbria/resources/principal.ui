@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Descargar Umbria</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/imagenes/notificadorLogo.png</normaloff>:/imagenes/notificadorLogo.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
@@ -36,7 +40,7 @@
          <widget class="QLineEdit" name="Destino"/>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="pushDirectorio">
           <property name="text">
            <string>Buscar</string>
           </property>
@@ -80,6 +84,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
