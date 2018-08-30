@@ -90,7 +90,7 @@ def descargarEscenas(soup, destino, br, ORIGEN, descargados):
 def descargaEscena(soup, destino, br, ORIGEN, link, descargados):
     escena = BeautifulSoup(br.open(link).read(), features="html5lib")
     fichero = escena.find("h3", {"id": "escena"}).text.replace(" ", "_")
-    f = open(destino + fichero + ".html", "w")
+    f = open(destino + fichero + ".html", "w", encoding='utf-8')
     hay_siguiente = escena.find("a", {"title": u"Página siguiente"})
 
     if hay_siguiente:
@@ -186,7 +186,7 @@ def limpiarPortada(soup):
 
 
 def descargarJugadores(recursos, soup, destino, br, ORIGEN, descargados):
-    f = open(destino + 'menu_jugadores.html', 'w')
+    f = open(destino + 'menu_jugadores.html', 'w', encoding='utf-8')
     link = soup.find("a", {"id": "linkdialogJugadores"})
 
     pers = BeautifulSoup(br.open(ORIGEN + link["href"]).read(),
@@ -203,7 +203,7 @@ def descargarJugadores(recursos, soup, destino, br, ORIGEN, descargados):
 
 
 def descargarPersonajes(recursos, soup, destino, br, ORIGEN, descargados):
-    f = open(destino + 'menu_personajes.html', 'w')
+    f = open(destino + 'menu_personajes.html', 'w', encoding='utf-8')
     link = soup.find_all("a", {"id": "linkdialogWrapper"})
 
     pers = BeautifulSoup(br.open(ORIGEN + link[0]["href"]).read(),
@@ -223,7 +223,7 @@ def descargarPersonajes(recursos, soup, destino, br, ORIGEN, descargados):
 def descargarPNJs(recursos, soup, destino, br, ORIGEN, descargados):
     link = soup.find_all("a", {"id": "linkdialogWrapper"})
     if len(link) > 1:
-        f = open(destino + 'menu_pnjs.html', 'w')
+        f = open(destino + 'menu_pnjs.html', 'w', encoding='utf-8')
         pers = BeautifulSoup(br.open(ORIGEN + link[1]["href"]).read(),
                              features="html5lib")
         if recursos:

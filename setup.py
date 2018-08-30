@@ -10,16 +10,15 @@
 
 """
 
-from distutils.core import setup
 
 from descargar import VERSION
 
 import sys
 
 try:
-    import py2exe
+    from cx_Freeze import setup, Executable
 except ImportError:
-    pass  # We are likely not running this under windows.
+    from distutils.core import setup
 
 descripcion_larga = "Un programa simple para descargar partidas de Umbria"
 
@@ -37,7 +36,8 @@ if sys.platform[:3] == 'win':
         download_url='https://github.com/javierriveracastro/exportadorUmbria'
                      '/tree/gui',
         windows=[{'script': 'descargar.py'}],
-        options={'py2exe': {'includes': ['sip']}},
+        options={'build_exe': {}},
+        executables=[Executable("descargar.py", base="Win32GUI")]
         )
 else:
     setup(
