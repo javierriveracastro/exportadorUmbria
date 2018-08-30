@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-# autor thewalking.miguel
-# version 0.1.1
+# autor thewalking.miguel, javierrivera2
 
 import os
 
@@ -9,6 +8,7 @@ from bs4 import BeautifulSoup
 from urllib.request import FancyURLopener
 from urllib.parse import urlencode
 
+VERSION = '0.99'
 
 def descargarFuentes(destino, br, ORIGEN):
     if not os.path.exists(destino + "tpls/oficial/css/fonts/"):
