@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/home/javier/Dropbox/Programas/spikes/exportadorUmbria/exportadorUmbria/umbria/resources/principal.ui'
+# Form implementation generated from reading ui file '/home/javier/Dropbox/Programas/spikes/exportadorUmbria/umbria/resources/principal.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.2
 #
@@ -32,9 +32,9 @@ class Ui_MainWindow(object):
         self.Destino = QtWidgets.QLineEdit(self.centralwidget)
         self.Destino.setObjectName("Destino")
         self.horizontalLayout.addWidget(self.Destino)
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout.addWidget(self.pushButton)
+        self.pushDirectorio = QtWidgets.QPushButton(self.centralwidget)
+        self.pushDirectorio.setObjectName("pushDirectorio")
+        self.horizontalLayout.addWidget(self.pushDirectorio)
         self.formLayout.setLayout(11, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout)
         self.Usuario = QtWidgets.QLineEdit(self.centralwidget)
         self.Usuario.setObjectName("Usuario")
@@ -61,7 +61,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Descargar Umbria"))
         self.label_3.setText(_translate("MainWindow", "Slug"))
-        self.pushButton.setText(_translate("MainWindow", "Buscar"))
+        self.pushDirectorio.setText(_translate("MainWindow", "Buscar"))
         self.label.setText(_translate("MainWindow", "Usuario"))
         self.label_2.setText(_translate("MainWindow", "Contraseña"))
         self.label_4.setText(_translate("MainWindow", "Destino"))

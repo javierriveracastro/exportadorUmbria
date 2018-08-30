@@ -6,7 +6,7 @@ Modulo con un GUI para descargar Umbria
 
 import sys
 
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
 
 from .principalUi import Ui_MainWindow
 
@@ -24,6 +24,7 @@ class VentanaPrincipal(QMainWindow):
             None, None, None, None
         # Señales
         self.ui.pushDescargar.clicked.connect(self.descargar)
+        self.ui.pushDirectorio.clicked.connect(self.seleccionar_dir)
 
     def descargar(self):
         """
@@ -34,6 +35,13 @@ class VentanaPrincipal(QMainWindow):
         self.slug = str(self.ui.Slug.text())
         self.destino = str(self.ui.Destino.text())
         self.close()
+
+    def seleccionar_dir(self):
+        """
+        Abre una ventana de selección de ficheros y lo asigna al campo destino
+        """
+        self.ui.Destino.setText(QFileDialog.getExistingDirectory(
+            self, 'Destino de la exportación', '~', QFileDialog.ShowDirsOnly))
 
 
 def main():
