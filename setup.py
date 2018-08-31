@@ -52,5 +52,5 @@ else:
         license='GPLv2',
         url='https://launchpad.net/notificadorumbria',
         download_url='https://github.com/javierriveracastro/exportadorUmbria'
-                     '/tree/gui',
-        )
+                     '/tree/gui', requires=['beautifulsoup4']
+    )
