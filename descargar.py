@@ -8,6 +8,8 @@ from bs4 import BeautifulSoup
 from urllib.request import FancyURLopener
 from urllib.parse import urlencode
 
+from umbria.descargar_gui import main as main_qt
+
 VERSION = '0.99'
 
 def descargarFuentes(destino, br, ORIGEN):
@@ -255,49 +257,40 @@ def hayPaginadorPortada(soup, destino, br, ORIGEN, descargados):
 
 def main():
     ORIGEN = "https://www.comunidadumbria.com/"
-    try:
-        from umbria.descargar_gui import main as main_qt
-    except ImportError:
-        usuario = input("Usuario:")
-        password = input("Password:")
-        slug = input(
-            "Dirección de la partida: www.comunidadumbria.com/partida/")
-        destino = input("Directorio de destino:")
-    else:
-        usuario, password, slug, destino = main_qt()
+    usuario, password, slug, destino = main_qt()
+    if usuario and password and slug and destino:
+        if destino[-1] != "/":
+            destino = destino + "/"
 
-    if destino[-1] != "/":
-        destino = destino + "/"
+        abridor = FancyURLopener()
+        abridor.open(ORIGEN)
+        abridor.open(ORIGEN, bytes(
+            urlencode({'ACCESO': usuario, 'CLAVE': password}), 'utf-8'))
 
-    abridor = FancyURLopener()
-    abridor.open(ORIGEN)
-    abridor.open(ORIGEN, bytes(
-        urlencode({'ACCESO': usuario, 'CLAVE': password}), 'utf-8'))
+        r = abridor.open(ORIGEN + "partida/" + slug).read()
 
-    r = abridor.open(ORIGEN + "partida/" + slug).read()
+        soup = BeautifulSoup(r, features="html5lib")
+        copia_sopa = BeautifulSoup(r, features="html5lib")
+        limpiarEscena(soup, False)
+        descargados = {}
 
-    soup = BeautifulSoup(r, features="html5lib")
-    copia_sopa = BeautifulSoup(r, features="html5lib")
-    limpiarEscena(soup, False)
-    descargados = {}
+        hayPaginadorPortada(soup, destino, abridor, ORIGEN, descargados)
+        descargarEscenas(soup, destino, abridor, ORIGEN, descargados)
+        descargaCss(soup, destino, abridor, ORIGEN)
+        descargaJs(soup, destino, abridor, ORIGEN)
+        imagenesPortada(soup, destino, abridor, ORIGEN, descargados)
+        # descargar imagenes de portada
 
-    hayPaginadorPortada(soup, destino, abridor, ORIGEN, descargados)
-    descargarEscenas(soup, destino, abridor, ORIGEN, descargados)
-    descargaCss(soup, destino, abridor, ORIGEN)
-    descargaJs(soup, destino, abridor, ORIGEN)
-    imagenesPortada(soup, destino, abridor, ORIGEN, descargados)
-    # descargar imagenes de portada
+        recursos = copia_sopa.find_all("link", {"type": "text/css"})
+        descargarPersonajes(recursos, copia_sopa, destino, abridor, ORIGEN, descargados)
+        descargarJugadores(recursos, copia_sopa, destino, abridor, ORIGEN, descargados)
+        descargarPNJs(recursos, copia_sopa, destino, abridor, ORIGEN, descargados)
+        descargarFuentes(destino, abridor, ORIGEN)
+        limpiarPortada(soup)
 
-    recursos = copia_sopa.find_all("link", {"type": "text/css"})
-    descargarPersonajes(recursos, copia_sopa, destino, abridor, ORIGEN, descargados)
-    descargarJugadores(recursos, copia_sopa, destino, abridor, ORIGEN, descargados)
-    descargarPNJs(recursos, copia_sopa, destino, abridor, ORIGEN, descargados)
-    descargarFuentes(destino, abridor, ORIGEN)
-    limpiarPortada(soup)
-
-    f = open(destino + 'portada.html', 'w')
-    f.write(soup.prettify())
-    f.close()
+        f = open(destino + 'portada.html', 'w')
+        f.write(soup.prettify())
+        f.close()
 
 
 if __name__ == "__main__":
