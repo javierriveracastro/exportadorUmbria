@@ -84,6 +84,14 @@
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>Usuario</tabstop>
+  <tabstop>Contrasena</tabstop>
+  <tabstop>Slug</tabstop>
+  <tabstop>Destino</tabstop>
+  <tabstop>pushDirectorio</tabstop>
+  <tabstop>pushDescargar</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>
