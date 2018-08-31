@@ -22,6 +22,7 @@ class Ui_MainWindow(object):
         self.formLayout = QtWidgets.QFormLayout()
         self.formLayout.setObjectName("formLayout")
         self.Contrasena = QtWidgets.QLineEdit(self.centralwidget)
+        self.Contrasena.setEchoMode(QtWidgets.QLineEdit.Password)
         self.Contrasena.setObjectName("Contrasena")
         self.formLayout.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.Contrasena)
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
