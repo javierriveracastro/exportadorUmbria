@@ -12,6 +12,7 @@ from umbria.descargar_gui import main as main_qt
 
 VERSION = '0.99'
 
+
 def descargarFuentes(destino, br, ORIGEN):
     if not os.path.exists(destino + "tpls/oficial/css/fonts/"):
         os.makedirs(destino + "tpls/oficial/css/fonts/")
@@ -49,7 +50,7 @@ def descargaJs(soup, destino, br, ORIGEN):
 
     for recurso in recursos:
         fichero = recurso.get("src")
-        if not fichero is None:
+        if fichero is not None:
             partes = fichero.split("/")
             prueba2 = partes[-1].split("?")[0]
 
@@ -160,7 +161,7 @@ def ponerLinksLocal(soup):
 
     for j in javascripts:
         fichero = j.get("src")
-        if not fichero is None:
+        if fichero is not None:
             j["src"] = "." + j.get("src")
 
     for e in estilos:
@@ -282,9 +283,12 @@ def main():
         # descargar imagenes de portada
 
         recursos = copia_sopa.find_all("link", {"type": "text/css"})
-        descargarPersonajes(recursos, copia_sopa, destino, abridor, ORIGEN, descargados)
-        descargarJugadores(recursos, copia_sopa, destino, abridor, ORIGEN, descargados)
-        descargarPNJs(recursos, copia_sopa, destino, abridor, ORIGEN, descargados)
+        descargarPersonajes(recursos, copia_sopa, destino, abridor, ORIGEN,
+                            descargados)
+        descargarJugadores(recursos, copia_sopa, destino, abridor, ORIGEN,
+                           descargados)
+        descargarPNJs(recursos, copia_sopa, destino, abridor, ORIGEN,
+                      descargados)
         descargarFuentes(destino, abridor, ORIGEN)
         limpiarPortada(soup)
 
